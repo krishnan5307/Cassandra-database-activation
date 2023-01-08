@@ -1,6 +1,6 @@
 from flask import Flask, request
 import sys
-import data_ingestion as pdf
+import data_ingestion 
 import connect_database
 import pip
 import os, sys
@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     try:
-        return pdf.get_data_ingestion
+        return data_ingestion.get_data_ingestion().get_data()
     except Exception as e:
         return str(e)
 
