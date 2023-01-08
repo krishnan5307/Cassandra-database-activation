@@ -5,13 +5,19 @@ import pip
 import os, sys
 import json
 from flask import send_file, abort, render_template
+import pandas as pd 
+
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     try:
-        return get_data_ingestion().get_data()
+        df=pd.DataFrame()
+        df= get_data_ingestion().get_data()
+        print(df["age"].mean())
+        print("finished")
+        return 1
     except Exception as e:
         return str(e)
 
