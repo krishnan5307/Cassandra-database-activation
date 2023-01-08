@@ -1,7 +1,6 @@
 from flask import Flask, request
 import sys
-import data_ingestion 
-import connect_database
+from data_ingestion import get_data_ingestion
 import pip
 import os, sys
 import json
@@ -12,9 +11,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     try:
-        return data_ingestion.get_data_ingestion().get_data()
+        return get_data_ingestion().get_data()
     except Exception as e:
         return str(e)
 
 if __name__ == "__main__":
-    app.run( debug=True)
+    app.run(debug=True)
