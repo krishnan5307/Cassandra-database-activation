@@ -2,6 +2,8 @@ from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.query import dict_factory
 import pandas as pd
+from flask import Flask,request,app,jsonify,url_for,render_template
+
 
 
 class configuration:
@@ -35,12 +37,14 @@ class configuration:
             ##print(se)
 
             sql_query = "SELECT * FROM insurance.insurance"
+            print("Initiating sql query to slect from database and table")
             for row in session.execute(sql_query):
                 data = data.append(pd.DataFrame(row, index=[0]))
             ##    data = pd.concat(pd.DataFrame(row, index=[0]))
             data = data.reset_index(drop=True).fillna(pd.np.nan)    
+            print("convertuing to csv file")
             data.to_csv("dataset/dataset.csv",mode="w", index=False,header=True)
-            session.shutdown(0)
+            #session.shutdown(0)
             return data
 
         except Exception as e:
