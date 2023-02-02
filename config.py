@@ -44,6 +44,7 @@ class configuration:
             data = data.reset_index(drop=True).fillna(pd.np.nan)    
             print("convertuing to csv file")
             data.to_csv("dataset/dataset.csv",mode="w", index=False,header=True)
+            
             #session.shutdown(0)
             return data
 

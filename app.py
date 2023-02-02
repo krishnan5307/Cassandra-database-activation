@@ -17,7 +17,8 @@ def index():
         df= get_data_ingestion().get_data()
         print(df["age"].mean())
         print("finished")
-        return render_template('templates.html')
+        context = df.to_dict("records")
+        return render_template('templates.html',context=context)
         
     except Exception as e:
         return str(e)

@@ -10,10 +10,35 @@
 <body>
  <div class="login">
 	<h1>Dataset captured fromm Cassandra database successfully</h1>
-
-
-   
  </div>
+
+ <table>
+    <thead>
+      <tr> 
+        <th>age</th>
+        <th>expenses</th>
+        <th>bmi</th>
+        <th>region</th>
+        <th>children</th>
+        <th>sex</th>
+        <th>smoker</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in context %}
+      <tr>
+        <td>{{ row.age }}</td>
+        <td>{{ row.expenses }}</td>
+        <td>{{ row.bmi }}</td>
+        <td>{{ row.region }}</td>
+        <td>{{ row.children }}</td>
+        <td>{{ row.sex }}</td>
+        <td>{{ row.smoker }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
 
 
 </body>
