@@ -40,6 +40,7 @@ class configuration:
             ##    data = pd.concat(pd.DataFrame(row, index=[0]))
             data = data.reset_index(drop=True).fillna(pd.np.nan)    
             data.to_csv("dataset/dataset.csv",mode="w", index=False,header=True)
+            session.shutdown(0)
             return data
 
         except Exception as e:

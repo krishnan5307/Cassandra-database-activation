@@ -6,6 +6,7 @@ import os, sys
 import json
 from flask import send_file, abort, render_template
 import pandas as pd 
+from flask import Flask,request,app,jsonify,url_for,render_template
 
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def index():
         df= get_data_ingestion().get_data()
         print(df["age"].mean())
         print("finished")
-        return 1
+        return render_template('template.html')
     except Exception as e:
         return str(e)
 
